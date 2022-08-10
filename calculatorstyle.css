@@ -98,24 +98,24 @@ button:hover {
 @media (max-width: 900px) {
     .container {
         margin-top: 20px;
-        height: 670px;
-        width: 95%;
+        height: 780px;
+        margin-left: 6px;
+        width: 450px;
         padding: 10px;
     }
     .btns {
         width: 90%;
-        height: 430px;
+        height: 530px;
         margin-top: 200px;
     }
     button {
-        width: 68px;
-        font-size: 25px;
+        width: 84px;
+        font-size: 33px;
         padding-right: 38px; 
-        margin-top: 8px;
-        text-align: left;
+        margin-top: 20px;
     }
     .ravno {
-        padding: 20px 77px;
+        padding: 20px 90px;
     }
 
 }
