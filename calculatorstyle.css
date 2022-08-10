@@ -96,6 +96,9 @@ button:hover {
 
 
 @media (max-width: 900px) {
+    body {
+        background: #262729;
+    }
     .container {
         margin-top: 20px;
         height: 780px;
