@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <meta name="keywords" content="калькулятор, математика, практика javascript, учебный проект">
+    <meta name="description" content="Калькулятор для математических операций">
+    <link rel="stylesheet" href="calculatorstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+    <div class="container">
+
+        <div class="window">
+            <span></span>
+        </div>
+
+        <div class="btns">
+            <div class="line1">
+                <button class = "icon1"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                <button class="plmn">+/-</button>
+                <button class="icon2"><i class="fa fa-level-down" aria-hidden="true"></i></button>
+                <button class="zn">/</button>
+            </div>
+
+            <div class="line2">
+                <button class="cif not">7</button>
+                <button class="cif not">8</button>
+                <button class="cif not">9</button>
+                <button class="zn">*</button>
+            </div>
+
+            <div class="lin3">
+                <button class="cif not">4</button>
+                <button class="cif not">5</button>
+                <button class="cif not">6</button>
+                <button class="zn">-</button>
+            </div>
+
+            <div class="line4">
+                <button class="cif not">1</button>
+                <button class="cif not">2</button>
+                <button class="cif not">3</button>
+                <button class="zn">+</button>
+            </div>
+
+            <div class="line5">
+                <button class="not">0</button>
+                <button class="not" id="tok">.</button>
+                <button class="ravno zn">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
