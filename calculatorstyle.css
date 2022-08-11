@@ -98,15 +98,19 @@ button:hover {
 @media (max-width: 900px) {
     .container {
         margin-top: 20px;
-        height: 780px;
-        margin-left: 6px;
-        width: 450px;
+        /* height: 780px; */
+        height: 810px;
+        /* margin-left: 6px; */
+        /* width: 450px; */
+        width: 480px;
         padding: 10px;
     }
     .btns {
         width: 90%;
-        height: 530px;
-        margin-top: 200px;
+        /* height: 530px; */
+        height: 560px;
+        /* margin-top: 200px; */
+        margin-top: 210px;
     }
     button {
         width: 84px;

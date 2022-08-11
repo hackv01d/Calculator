@@ -10,11 +10,10 @@ class Calc {
                 return this.num1 + this.num2;
             case "-":
                 return this.num1 - this.num2;
-            case "*":
+            case "x":
                 return this.num1 * this.num2;
             case "/":
-                if (this.num2!=0)
-                    return this.num1 / this.num2;
+                if (this.num2!=0) return this.num1 / this.num2;
                 else {
                     document.querySelector(".window span").classList.toggle("open")
                     document.querySelector(".window span").innerHTML = "Школу с первого класса начал прогуливать?";
@@ -59,8 +58,8 @@ function getCalculator(event) {
             if (num.includes(".")) document.querySelector("#tok").disabled = true;
         } else {
             if (num!="") mycalc.push(num);
-            if ((mycalc.length==3 && (Number.isInteger(+mycalc.at(-1)) || String(mycalc.at(-1)).includes("."))) && ((event.target.innerHTML=="+" || event.target.innerHTML=="-") || (["**", "//"].includes(mycalc.at(-2)+event.target.innerHTML)))) Ravno();
-            else if ((mycalc.length==3 && (Number.isInteger(+mycalc.at(-1)))) && (["+", "-"].includes(mycalc.at(-2)) && ["*", "/"].includes(event.target.innerHTML))) del = [+mycalc.shift(), mycalc.shift()];
+            if ((mycalc.length==3 && (Number.isInteger(+mycalc.at(-1)) || String(mycalc.at(-1)).includes("."))) && ((event.target.innerHTML=="+" || event.target.innerHTML=="-") || (["xx", "//"].includes(mycalc.at(-2)+event.target.innerHTML)))) Ravno();
+            else if ((mycalc.length==3 && (Number.isInteger(+mycalc.at(-1)))) && (["+", "-"].includes(mycalc.at(-2)) && ["x", "/"].includes(event.target.innerHTML))) del = [+mycalc.shift(), mycalc.shift()];
             if (Number.isInteger(+mycalc.at(-1)) || String(mycalc.at(-1)).includes(".")) mycalc.push(event.target.innerHTML);
             num = "";
         };
@@ -72,7 +71,7 @@ function getCalculator(event) {
     }
     else if ((event.target.className =="fa fa-level-down" || event.target.className == "icon2") && (num.length>0 || res!=undefined)) {
         if (res!=undefined) {
-            if (String(mycalc[0]).length==2 && String(mycalc[0])[0]=="-") mycalc = [0]
+            if (String(mycalc[0]).length==2 && String(mycalc[0])[0]=="-") mycalc = [0];
             else mycalc = [+(String(mycalc[0]).slice(0, -1))];
             window.innerHTML = mycalc[0];
         }
@@ -105,30 +104,35 @@ function getCalculator(event) {
         num = "";
         del = [];
     }
-    function Err(str) {
-        window.classList.toggle("open")
-        window.innerHTML = str;
-        setTimeout(() => {
-            window.innerHTML = "";
+    function Err(str, num) {
+        if (String(num).includes(".")) {
+            window.innerHTML = +(String(num).slice(0, 15));
+            mycalc = [+(String(num).slice(0, 15))];
+        } else {
             window.classList.toggle("open")
-        }, 700);
-        Reset();
+            window.innerHTML = str;
+            setTimeout(() => {
+                window.innerHTML = "";
+                window.classList.toggle("open")
+            }, 700);
+            Reset();
+        };
     }
     function Ravno() {
         if (num!="") mycalc.push(num);
         num = "";
         if (mycalc.length>=3) {
             res = new Calc(+mycalc[0], mycalc[1], +mycalc.at(-1));
-            if (del.length==0 || ["/", "*"].includes(event.target.innerHTML)){
+            if (del.length==0 || ["/", "x"].includes(event.target.innerHTML)){
                 if (String(res.result()).length>15){
-                    Err("Недопустимое количество символов")
+                    Err("Недопустимое количество символов", res.result());
                 }
                 else window.innerHTML = res.result();
                 mycalc = [res.result()];
             }; 
             if (del[1]=="-" && ["+", "-", "="].includes(event.target.innerHTML)) {
                 if (String(del[0] - res.result()).length>15) {
-                    Err("Недопустимое количество символов")
+                    Err("Недопустимое количество символов", del[0] - res.result());
 
                 }
                 else window.innerHTML = del[0] - res.result();
@@ -137,7 +141,7 @@ function getCalculator(event) {
             }
             if (del[1]=="+" && ["+", "-", "="].includes(event.target.innerHTML)) {
                 if  (String(del[0] + res.result()).length>15){
-                    Err("Недопустимое количество символов")
+                    Err("Недопустимое количество символов", del[0] + res.result());
                 }
                 else    window.innerHTML = del[0] + res.result();
                 mycalc = [del[0] + res.result()];
