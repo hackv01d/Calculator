@@ -153,5 +153,10 @@ function getCalculator(event) {
         }
     }
 }
+function blockMouseDown(event) {
+    event.preventDefault();
+}
+
 let container = document.querySelector(".container");
+container.addEventListener("mousedown", blockMouseDown);
 container.addEventListener("click", getCalculator);
